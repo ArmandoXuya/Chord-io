@@ -1,0 +1,29 @@
+.center {
+    display: block;
+    margin: auto;
+    width: 95%;
+   }
+   .borde{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+    background-color: rgb(230, 199, 28) ;
+    border: solid 1px #fff;
+    border-radius: 25px;
+    color: #fff;
+   }
+
+.itemTitulo {   background-color: color goldenrod !important; }
+
+.myion-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+    background-color: rgb(151, 158, 158) ;
+    border: solid 1px #fff;
+    color: #fff;
+  }

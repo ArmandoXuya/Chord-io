@@ -1,0 +1,148 @@
+<ion-header [translucent]="true" color="primary">
+  <ion-toolbar>
+<ion-buttons slot="start">
+  <ion-back-button defaultHref="/dashboard"></ion-back-button>
+</ion-buttons>
+    <ion-title  class="ion-text-center"><h1>{{title}}</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+<br/>
+
+  <ion-grid>
+      <ion-row class="borde">
+
+        <ion-col size="6" class="myion-col">
+           <ion-label class="center" ><h1>Bajar Tonalidad</h1></ion-label> 
+        </ion-col>
+       
+        <ion-col  size="6" class="myion-col">
+           <ion-label class="center" ><h1>Subir Tonalidad</h1></ion-label> 
+        </ion-col>
+      </ion-row>
+
+      <ion-row >
+        <ion-col size="3" >
+             <ion-button  expand="block" color="primary" fill="outline" (click)="convertir('3')"><ion-label>1 Tono</ion-label></ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button  expand="block" color="primary" fill="outline" (click)="convertir('4')"> <ion-label>1/2 Tono</ion-label></ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button  expand="block" color="primary" fill="outline" (click)="convertir('2')"><ion-label>1/2 Tono</ion-label></ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button  expand="block" color="primary" fill="outline" (click)="convertir('1')"><ion-label>1 Tono</ion-label></ion-button>
+        </ion-col>
+      </ion-row>
+  
+   <ion-row  class="borde">
+    <ion-col>
+      <ion-text class="center">{{MsjMostrar}}</ion-text>
+    </ion-col>
+   </ion-row>
+
+<ion-row>
+  <ion-col size="12">
+    <ion-textarea 
+    fill="solid" 
+    labelPlacement="floating" 
+    label="Ingrea tus Notas musicales" 
+    placeholder="ingresa tus notas"
+    [autoGrow]="true"
+    [(ngModel)]="txtlist"
+    rows="18"
+    minlength="1" 
+    style="text-transform:uppercase"
+    ></ion-textarea>
+  </ion-col>
+ </ion-row>
+</ion-grid> 
+
+<ion-list class="center">
+ <ion-item  class="center">
+  <ion-col class="myion-col">
+    <ion-label > <H1>Conversiones Especiales</H1> </ion-label>
+  </ion-col>
+ </ion-item>
+</ion-list>
+
+
+<ion-grid >
+<ion-row >
+  <ion-col size="6" >
+    <ion-button  (click)="ConvertirTrTe()"  expand="block" type="floating" color="warning">
+      <ion-label> <p>Trompeta > teclado</p></ion-label>
+     </ion-button>
+  </ion-col>
+  <ion-col size="6">
+    <ion-button  (click)="convertirTS()" expand="block" type="floating" color="warning">
+      <ion-label> <p>Trompeta > Saxo A</p></ion-label>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+<ion-row >
+  <ion-col size="6">
+    <ion-button   (click)="convertirST()"  expand="block" color="warning">
+    <ion-label> <p>Saxo A> Trompeta</p></ion-label>
+  </ion-button></ion-col>
+  <ion-col size="6"> 
+    <ion-button  (click)="ConvertirSTe()"  expand="block" color="warning">
+    <ion-label><p>Saxo A> Teclado</p></ion-label>
+  </ion-button></ion-col>
+
+</ion-row>
+<ion-row >
+  <ion-col size="6"> 
+    <ion-button   (click)="ConvertirTeTr()" expand="block"  color="warning">
+    <ion-label><p>Teclado > Trompeta</p></ion-label>
+  </ion-button>
+</ion-col>
+  <ion-col size="6"> 
+    <ion-button   (click)="ConvertirTeS()"  expand="block" color="warning">
+    <ion-label><p>Teclado > Saxo A</p></ion-label>
+ </ion-button>
+  </ion-col>
+  
+</ion-row>
+</ion-grid>
+</ion-content>
+
+<ion-footer class="center">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-button  expand="block" (click)="copyToClipboard()" fill="outline">
+            <ion-icon slot="start" name="copy-outline"></ion-icon>
+            Copiar
+          </ion-button>   
+        </ion-col>
+        <ion-col size="4">
+          <ion-button  expand="block" (click)="restaurar()" fill="outline">
+            <ion-icon slot="start"  name="refresh-outline"></ion-icon>
+            Restaurar
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button  expand="block" (click)="limpiarInfo()" fill="outline">
+            <ion-icon slot="start" name="remove-circle-outline"></ion-icon>
+            Limpiar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-footer>
+
+<ion-toast
+[isOpen]="StatusAlerta"
+[message]="MsjMostrar"
+[duration]="3000"
+(didDismiss)="setOpen(false)"
+></ion-toast>

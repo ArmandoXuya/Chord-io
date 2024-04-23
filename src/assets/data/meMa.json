@@ -1,0 +1,14 @@
+[
+
+    {
+        "codigo":"me",
+        "descripcion":"Menor"
+       
+    },
+    {
+        "codigo":"ma",
+        "descripcion":"Mayor"
+       
+    }
+
+]

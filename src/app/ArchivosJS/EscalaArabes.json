@@ -1,0 +1,90 @@
+[
+    { 
+        "ID":1,
+        "Escala":"Escala de A",
+        "nota1":"A ",
+        "nota2":"A#",
+        "nota3":"C#",
+        "nota4":"D ",
+        "nota5":"E ",
+        "nota6":"F ",
+        "nota7":"G#",
+        "nota8":""
+    },
+    { 
+       "ID":2,
+       "Escala":"Escala de B ",
+       "nota1":"B ",
+       "nota2":"C#",
+       "nota3":"D ",
+       "nota4":"E ",
+       "nota5":"F#",
+       "nota6":"G ",
+       "nota7":"A ",
+       "nota8":""
+    },
+    { 
+        "ID":3,
+        "Escala":"Escala de C ",
+        "nota1":"C ",
+        "nota2":"C#",
+        "nota3":"E ",
+        "nota4":"F ",
+        "nota5":"G ",
+        "nota6":"G#",
+        "nota7":"B ",
+        "nota8":""
+    },
+    { 
+        "ID":4,
+        "Escala":"Escala de D ",
+        "nota1":"D ",
+        "nota2":"D#",
+        "nota3":"F#",
+        "nota4":"G ",
+        "nota5":"A ",
+        "nota6":"A#",
+        "nota7":"C#",
+        "nota8":""
+     },
+    { 
+        "ID":5,
+        "Escala":"Escala de E ",
+        "nota1":"E ",
+        "nota2":"F ",
+        "nota3":"G#",
+        "nota4":"A ",
+        "nota5":"B ",
+        "nota6":"C ",
+        "nota7":"D#",
+        "nota8":""
+    },
+    { 
+        "ID":6,
+        "Escala":"Escala de F",
+        "nota1":"F ",
+        "nota2":"F#",
+        "nota3":"A ",
+        "nota4":"A#",
+        "nota5":"C ",
+        "nota6":"C#",
+        "nota7":"E ",
+        "nota8":" "
+    }
+    ,
+    { 
+        "ID":7,
+        "Escala":"Escala de G ",
+        "nota1":"G ",
+        "nota2":"G#",
+        "nota3":"B ",
+        "nota4":"C ",
+        "nota5":"D ",
+        "nota6":"D#",
+        "nota7":"F#",
+        "nota8":""
+    }
+
+
+]
+

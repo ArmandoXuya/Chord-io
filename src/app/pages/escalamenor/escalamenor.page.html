@@ -1,0 +1,92 @@
+<ion-header [translucent]="true"  class="ion-no-border">
+  <ion-toolbar >
+<ion-buttons slot="start">
+  <ion-back-button defaultHref="/dashboard"></ion-back-button>
+</ion-buttons>
+<ion-title class="ion-text-center"><h1> Escalas Menores</h1></ion-title>
+
+    <ion-buttons slot="end">
+     
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-row  class="borde">
+    <ion-col>
+      <ion-text class="center"> <h5>Escalas Menores </h5></ion-text>
+    </ion-col>
+   </ion-row>
+<!--Escalas menores  -->
+ <ion-list [inset]="true" *ngFor="let product of scalaVer | async">
+  <ion-item [button]="true" detail="false" (click)="openModal(product.ID, '3')">
+    <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
+    <div class="unread-indicator-wrapper" slot="start"></div>
+    <ion-label>
+      <strong>{{product.Escala}}</strong>
+      <ion-text>{{product.nota1}}
+        - {{product.nota2}}
+        - {{product.nota3}}
+        - {{product.nota4}}
+        - {{product.nota5}}
+        - {{product.nota6}}
+        - {{product.nota7}}
+        - {{product.nota8}}
+      </ion-text><br />
+    </ion-label>
+  </ion-item>
+ </ion-list>
+
+ <!--Escalas menores  Sostenidos-->
+
+ <ion-row  class="borde">
+  <ion-col>
+    <ion-text class="center"> <h5>Escalas Menores Sostenidas</h5></ion-text>
+  </ion-col>
+ </ion-row>
+
+ <ion-list [inset]="true" *ngFor="let product of scalaSost | async">
+  <ion-item [button]="true" detail="false" (click)="openModal(product.ID, '4')">
+    <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
+    <div class="unread-indicator-wrapper" slot="start"></div>
+    <ion-label>
+      <strong>{{product.Escala}}</strong>
+      <ion-text>{{product.nota1}}
+        - {{product.nota2}}
+        - {{product.nota3}}
+        - {{product.nota4}}
+        - {{product.nota5}}
+        - {{product.nota6}}
+        - {{product.nota7}}
+        - {{product.nota8}}
+      </ion-text><br />
+    </ion-label>
+  </ion-item>
+ </ion-list>
+</ion-content>
+
+
+<ion-popover #popover [isOpen]="isOpen" 
+     (didDismiss)="isOpen = false" 
+      side="top" alignment="center" 
+      size="cover"
+      [keepContentsMounted]="true"> 
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+ 
+      <ion-label color="primary" class="center">{{texttitulo}}</ion-label>  
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+    
+      {{textoa}}
+      <br/>
+      <br/>
+      {{textob}}
+
+    </ion-content>
+  </ng-template>
+</ion-popover>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Chords_App</string>
+    <string name="title_activity_main">Chords_App</string>
+    <string name="package_name">com.ChordsApp_</string>
+    <string name="custom_url_scheme">com.ChordsApp_</string>
+</resources>

@@ -1,0 +1,289 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+<ion-buttons slot="start">
+  <ion-back-button defaultHref="/dashboard"></ion-back-button>
+</ion-buttons>
+    <ion-title class="ion-text-center"><h1>{{title}}</h1></ion-title>
+    <ion-buttons slot="end">  
+      {{total}} 
+     <!--  <ion-input  color="primary" type="file" (change)="cargayopdateexcel($event)">Carga</ion-input> -->
+    </ion-buttons>
+
+
+  </ion-toolbar>
+  <ion-list>
+    <ion-item>
+      <ion-segment value="Ticanto2"   [(ngModel)]="Ticanto2" >
+        <ion-segment-button value="to">
+          <ion-label>Todos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value={{LisBod.codigo}} *ngFor="let LisBod of listaipC2">
+          <ion-label>{{LisBod.descripcion}}</ion-label>
+        </ion-segment-button>   
+      </ion-segment>
+    </ion-item>
+    
+    <ion-item>
+      
+      <ion-radio-group value="0">
+        <ion-row>
+          <ion-col>
+              <ion-radio value="1" aria-label="Nota ">Nota</ion-radio>
+          </ion-col>
+
+          <ion-col>
+              <ion-radio value="2" aria-label="Autor">Autor</ion-radio>
+          </ion-col>
+
+          <ion-col>
+              <ion-radio value="3" aria-label="Compositor">Compositor</ion-radio> 
+          </ion-col>
+          
+          <ion-col>
+            <ion-radio value="0" aria-label="Compositor">Todo</ion-radio> 
+        </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </ion-item>
+    <ion-item>
+      <ion-searchbar animated="true"  placeholder="Buscar........" [(ngModel)]="filterPost"  ></ion-searchbar>
+    </ion-item >
+  </ion-list>
+</ion-header>
+ 
+<ion-content [fullscreen]="true">
+
+
+  <ion-grid > 
+    <ion-row>
+      <ion-col size="12" *ngFor="let opciones of filteredProducts ">
+        <ion-card >
+        <ion-card-header>
+          <ion-card-title>{{opciones.nombrec}} </ion-card-title>
+          <ion-card-subtitle><ion-label color="primary" *ngIf="opciones.autor !=''">Autor:</ion-label>{{opciones.autor}}</ion-card-subtitle>       
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label color="danger" *ngIf="opciones.interp !=''">Interprete:</ion-label>{{opciones.interp}} <br/>
+          <ion-label color="secondary"  *ngIf="opciones.nota1 !=''">Original:</ion-label> {{opciones.nota1}}{{opciones.mm1}}<br/>
+          <ion-label color="success" *ngIf="opciones.nota2 !=''">Primer Cambio:</ion-label>{{opciones.nota2}}{{opciones.mm2}}<br/>
+          <ion-label color="warning" *ngIf="opciones.nota3 !=''">Segundo Cambio:</ion-label>{{opciones.nota3}}{{opciones.mm3}}
+        </ion-card-content>
+        <ion-button  fill="outline" (click)="abrirmodal(opciones,'M')">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button  fill="outline" (click)="borrarnota(opciones)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button> 
+      </ion-card>
+     </ion-col>
+    </ion-row> 
+  </ion-grid>
+
+<!--   <ion-list>
+   
+    <ion-item *ngFor="let productos  of filteredProducts " >
+      <ion-buttons slot="start">
+      {{productos.nombrec}},
+      <p *ngIf="productos.ticanto =='al'">Alabanza </p>
+      <p *ngIf="productos.ticanto =='ad'">Adoracion </p>
+    </ion-buttons>
+      {{productos.nota1}}{{productos.mm1}}
+      {{productos.nota2}}{{productos.mm2}}
+      {{productos.nota3}}{{productos.mm3}}
+      <ion-buttons slot="end">
+        <ion-button  fill="outline" (click)="abrirmodal(productos,'M')">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button  fill="outline" (click)="borrarnota(productos)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button> 
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+ -->
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="abrirmodal(listaempty,'N')">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-grid>
+          <ion-row>
+          <ion-col size-sm="12">
+            <ion-input tipe="text" placeholder="Nombre Canto ....." [(ngModel)]="NombreC"></ion-input>           
+          </ion-col>
+         
+        </ion-row>
+        </ion-grid>
+         
+        <ion-buttons slot="end">
+                 <ion-button (click)="setOpen(false)">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <ion-row>
+        <ion-col size-sm="12">
+          <ion-item>
+      <ion-select label="Selecciona Tipo de Canto" interface="popover" labelPlacement="floating"
+      placeholder="Selecciona el tipo de Canto "
+      [(ngModel)]="Ticanto"
+       value="Ticanto"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listaipC "
+        >{{LisBod.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size-sm="12">
+      <ion-item>
+
+      <ion-input label="Autor:" labelPlacement="floating" placeholder="Ingresa Autor" [(ngModel)]="Autor"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+   
+<ion-row>
+  <ion-col size-sm="12">
+    <ion-item>
+      <ion-input label="Interprete:" labelPlacement="floating" placeholder="Ingresa Interprete" [(ngModel)]="Interp"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-item-divider color="secondary">
+  <ion-label>Nota Original</ion-label>
+</ion-item-divider>
+
+<ion-row>
+  <ion-col size-sm="12" >
+    <ion-item>
+      <ion-select label="Selecciona Nota " interface="popover" labelPlacement="floating"
+      placeholder=""
+      [(ngModel)]="Nota1"
+       value="Nota1"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listanotas1 "
+        >{{LisBod.codigo}}</ion-select-option>
+      </ion-select>
+
+      <ion-select label="Mayor/Menor:" interface="popover" labelPlacement="floating"
+      placeholder=""
+      [(ngModel)]="Mm1"
+       value="Mm1"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listatiponota1 "
+        >{{LisBod.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-item-divider color="success">
+  <ion-label>Primer Cambio de Nota </ion-label>
+</ion-item-divider>
+
+<ion-row>
+  <ion-col size-sm="12">
+    <ion-item>
+      <ion-select label="Selecciona Nota" interface="popover" labelPlacement="floating"
+      placeholder=""
+      [(ngModel)]="Nota2"
+       value="Nota2"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listanotas2 "
+        >{{LisBod.codigo}}</ion-select-option>
+      </ion-select>
+
+      <ion-select label="Mayor/Menor:" interface="popover" labelPlacement="floating"
+      placeholder=""
+      [(ngModel)]="Mm2"
+       value="Mm2"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listatiponota2 "
+        >{{LisBod.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-item-divider color="warning">
+  <ion-label>Segundo Cambio de Nota</ion-label>
+</ion-item-divider>
+
+<ion-row>
+  <ion-col size-sm="12" >
+    <ion-item>
+      <ion-select label="Seleccionar Nota" interface="popover" labelPlacement="floating"
+      placeholder=""
+      [(ngModel)]="Nota3"
+       value="Nota3"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listanotas3 "
+        >{{LisBod.codigo}}</ion-select-option>
+      </ion-select>
+
+      <ion-select label="Mayor/Menor:" interface="popover" labelPlacement="floating"
+      placeholder=""
+      [(ngModel)]="Mm3"
+       value="Mm3"     
+       >
+        <ion-select-option value={{LisBod.codigo}} *ngFor="let LisBod of listatiponota3 "
+        >{{LisBod.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-item-divider color="medium">
+  <ion-label>Notas sobre el canto</ion-label>
+</ion-item-divider>
+<ion-row>
+  <ion-col size-sm="12" >
+    <ion-item>
+    <ion-textarea 
+    fill="solid" 
+    labelPlacement="floating" 
+    label="" 
+    placeholder=""
+    [autoGrow]="true"
+    rows="8"
+    minlength="1" 
+    
+    [(ngModel)]="Texto"
+    ></ion-textarea>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-label>fec ult Mod.</ion-label> {{fecha}}
+        </ion-buttons>
+       
+        <ion-buttons slot="end">
+          <ion-button (click)="Guardar()">
+            <ion-icon name="save-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </ng-template>
+</ion-modal>

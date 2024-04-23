@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+   
+    </ion-buttons>
+    <ion-title class="ion-text-center"><h1> Registrar Usuario</h1></ion-title>
+
+    <ion-buttons slot="end"> 
+    </ion-buttons>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="wrapper fadeInDown" >
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  
+   <ion-list class="center">
+    <ion-item>
+      <ion-img class="fadeIn first" [src]="imgLogo" class="imig" ></ion-img> <br/>
+    </ion-item>
+  
+    <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+      <ion-item class="fadeIn second" >
+        <ion-input  
+        label="Correo Electronico" labelPlacement="floating"
+        placeholder="ingresa Correo "
+        type="mail" [(ngModel)]="usuario.email"
+        name="Correo"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-item  class="fadeIn third"> 
+        <ion-input   
+        label="Contraseña" labelPlacement="floating"
+        placeholder="ingresa Contraseña"
+        [type]="showpassword ? 'text' :'password' " [(ngModel)]="usuario.password"
+        name="password"
+        required
+        ></ion-input>
+        <ion-icon slot="end" [name]="nameicon" (click)="togglePass()"></ion-icon>
+      </ion-item>
+   
+      <ion-button 
+              class="fadeIn fourth"
+              expand="full" type="submit"
+              [disabled]="formulario.invalid"
+              color="primary"
+             id="open-toast"
+       >Registrar Usuario</ion-button>
+
+       <ion-button 
+       class="fadeIn fourth"
+       expand="full" 
+       color="danger"
+       (click)="onClick2()"
+      id="open-toast"
+>Regresar al Login</ion-button>
+
+    </form>
+  
+   </ion-list>
+  
+   <ion-toast  [isOpen]="isToastOpen" [message]="errorMsj" [duration]="5000" (didDismiss)="setOpen(false)"></ion-toast>
+  
+  
+  </ion-content>

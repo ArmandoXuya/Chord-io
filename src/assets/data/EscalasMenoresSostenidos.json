@@ -1,0 +1,66 @@
+[
+   
+        { 
+            "ID":1,
+            "Escala":"A# menor",
+            "nota1":"A#",
+            "nota2":"C ",
+            "nota3":"C#",
+            "nota4":"D#",
+            "nota5":"F ",
+            "nota6":"F#",
+            "nota7":"G#",
+            "nota8":"A#"
+        },
+        { 
+            "ID":2,
+            "Escala":"C# menor",
+            "nota1":"C#",
+            "nota2":"D#",
+            "nota3":"E ",
+            "nota4":"F#",
+            "nota5":"G#",
+            "nota6":"A ",
+            "nota7":"B ",
+            "nota8":"C#"
+        },
+        { 
+            "ID":3,
+            "Escala":"D# menor",
+            "nota1":"D#",
+            "nota2":"F ",
+            "nota3":"F#",
+            "nota4":"G#",
+            "nota5":"A#",
+            "nota6":"B ",
+            "nota7":"C#",
+            "nota8":"D#"
+        },
+        { 
+            "ID":4,
+            "Escala":"F# menor",
+            "nota1":"F#",
+            "nota2":"G#",
+            "nota3":"A ",
+            "nota4":"B ",
+            "nota5":"C#",
+            "nota6":"D ",
+            "nota7":"E ",
+            "nota8":"F#"
+        },
+        { "ID":5,
+            "Escala":"G# menor",
+            "nota1":"G#",
+            "nota2":"A#",
+            "nota3":"B ",
+            "nota4":"C#",
+            "nota5":"D#",
+            "nota6":"E ",
+            "nota7":"F#",
+            "nota8":"G#"
+        }
+
+     
+
+    
+]

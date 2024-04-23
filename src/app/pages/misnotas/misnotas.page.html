@@ -1,0 +1,159 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+<ion-buttons slot="start">
+  <ion-back-button defaultHref="/dashboard"></ion-back-button>
+</ion-buttons>
+    <ion-title class="ion-text-center"><h1>{{title}}</h1></ion-title>
+    <ion-buttons slot="end">
+      <ion-button   color="primary"  fill="outline" (click)="activapinfiltro()" *ngIf="!colgarfiltro">
+        <ion-img src="../../../assets/Iconos/pushblack.png"></ion-img>
+       </ion-button>
+ 
+       <ion-button  color="primary" fill="outline" (click)="activapinfiltro()" *ngIf="colgarfiltro">
+        <ion-img src="../../../assets/Iconos/Pushblackfull.png"></ion-img>
+       </ion-button> 
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+<ion-grid>
+
+  <ion-row>
+   <ion-col size-sm="12">
+      <ion-searchbar animated="true"  placeholder="Buscar........" [(ngModel)]="filterpost"  ></ion-searchbar>
+     </ion-col>    
+    </ion-row> 
+
+</ion-grid>
+
+<!-- esto es para el filtro de Colgados-->
+<ion-grid *ngIf="colgarfiltro" > 
+  <ion-label>Colgados</ion-label>
+  <ion-row>
+    <ion-col size-sm="4"   *ngFor="let opciones of listadodatoPrin | filter1:colgarfiltro">
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title>{{opciones.titulo}} / {{opciones.fecha}}</ion-card-title>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-buttons slot="end">
+          <ion-button  *ngIf="!opciones.colgar">
+            <ion-icon name="flash-off-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-card-header>
+      <ion-card-content>
+        {{opciones.descripb}}...
+      </ion-card-content>
+      <ion-button  fill="outline" (click)="abrirmodal(opciones,'M')">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button  fill="outline" (click)="borrarnota(opciones)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button> 
+    </ion-card>
+   </ion-col>
+  </ion-row> 
+</ion-grid>
+
+<!-- esto es para el fintro de Otros datos-->
+  <ion-grid  > 
+    <ion-label>Otros</ion-label>
+    <ion-row>
+      <ion-col size-sm="4"  *ngFor="let opciones of listadodato | filter2:filterpost">
+      <ion-card >
+        <ion-card-header>
+          <ion-card-title>{{opciones.titulo}} / {{opciones.fecha}}</ion-card-title>
+          <ion-card-subtitle></ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{opciones.descripb}}...
+        </ion-card-content>
+        <ion-button  fill="outline" (click)="abrirmodal(opciones,'M')">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button  fill="outline" (click)="borrarnota(opciones)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button> 
+      </ion-card>
+     </ion-col>
+    </ion-row> 
+  </ion-grid>
+
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="abrirmodal(listaempty,'N')">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-grid>
+          <ion-row>
+          <ion-col size-sm="9">
+            <ion-input tipe="text" placeholder="Titulo ....." [(ngModel)]="TituloNota"></ion-input>
+            
+          </ion-col>
+          <ion-col size-sm="3">
+           <ion-input type="date" placeholder="Fecha" [(ngModel)]="FechaIng"></ion-input>
+          </ion-col>
+        </ion-row>
+        </ion-grid>
+         
+        <ion-buttons slot="end">
+          <ion-button (click)="activapin(2)"  *ngIf="!colgar">
+            <ion-img src="../../../assets/Iconos/pushblack.png"></ion-img>
+           </ion-button>
+     
+           <ion-button (click)="activapin(2)"  *ngIf="colgar">
+            <ion-img src="../../../assets/Iconos/Pushblackfull.png"></ion-img>
+           </ion-button>
+
+          <ion-button (click)="setOpen(false)">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-textarea 
+      fill="solid" 
+      labelPlacement="floating" 
+      label="Ingrea tus Notas" 
+      placeholder="ingresa tus notas"
+      [autoGrow]="true"
+      rows="30"
+      minlength="1" 
+      
+      [(ngModel)]="txtdes"
+      ></ion-textarea>
+    
+      
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-label>fec ult Mod.</ion-label> {{fechamod}}
+        </ion-buttons>
+       
+        <ion-buttons slot="end">
+          <ion-button (click)="Guardar()">
+            <ion-icon name="save-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </ng-template>
+</ion-modal>
+

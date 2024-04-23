@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-img src="assets/LOGCHORDS.png" class="imig" ></ion-img> <br/>
+    </ion-buttons>
+    <ion-title class="ion-text-center"><h1> Menu Acordes</h1></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  color="light">
+  <br/>
+ 
+  <ion-list [inset]="true">
+    <ion-list-header>
+      <ion-label  class="ion-text-center"><h1>Selecciona tu opcion </h1> </ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let c of componentes | async  " 
+    [routerLink]="c.redirecTo"
+    [button]="true" detail="false">
+    <div class="unread-indicator-wrapper" slot="start"></div>
+    <ion-icon slot="start" [name]="c.icon" size="large" [color]="c.color"></ion-icon>
+
+     <ion-label>
+      <strong> {{c.name}} </strong>
+      <ion-note color="medium" class="ion-text-wrap">{{c.descrip}}</ion-note>
+      </ion-label>
+      <div class="metadata-end-wrapper" slot="end">
+        <ion-note color="medium"></ion-note>
+        <ion-icon color="medium" name="chevron-forward"></ion-icon>
+      </div>
+    </ion-item>
+    
+  </ion-list>
+</ion-content>

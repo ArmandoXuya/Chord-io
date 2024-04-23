@@ -1,0 +1,7 @@
+{
+  "name": "Chordify",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

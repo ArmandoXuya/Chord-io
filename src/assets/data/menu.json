@@ -1,0 +1,56 @@
+[
+
+{
+    "icon":"trail-sign-outline",
+    "name":"Transportación",
+    "redirecTo":"/transponce",
+    "descrip":"Converte tus melodias",
+    "color":"danger"
+},
+{
+    "icon":"receipt-outline",
+    "name":"Mis Notas Personales",
+    "redirecTo":"/misnotas",
+    "descrip":"Crea notas ",
+    "color":"primary"
+},
+{
+    "icon":"library-outline",
+    "name":"Registro de Cantos",
+    "redirecTo":"/registrocantos",
+    "descrip":"Crea un registro de las notas en que ejecutas tus cantos",
+    "color":"dark"
+},
+{
+
+"icon":"code-outline",
+"name":"Escalas Mayores",
+"redirecTo":"/escalamayor",
+"descrip":"Listado de Escalas Mayores ",
+"color":"secondary"
+},
+{
+
+"icon":"code-download-outline",
+"name":"Escalas Menores",
+"redirecTo":"/escalamenor",
+"descrip":"Listado de Escalas Menores ",
+"color":"tertiary"
+},
+{
+"icon":"barcode-outline",
+"name":"Escalas Blues",
+"redirecTo":"/escalabluess",
+"descrip":"Listado de Escalas Blues ",
+"color":"success"
+},
+
+{
+"icon":"analytics-outline",
+"name":"Escalas Arabes",
+"redirecTo":"/escala-arabe",
+"descrip":"Listado de Escalas Arabes ",
+"color":"warning"
+}
+
+]
